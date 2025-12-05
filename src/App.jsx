@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useEffect } from 'react'
 import './App.css'
+import AdminAuth from './components/Auth/AdminAuth'
+import { Switch ,Route, Redirect} from 'react-router-dom/cjs/react-router-dom.min'
+import AdminHomePage from './components/AdminHomePage'
+import { useDispatch, useSelector } from 'react-redux'
+import { checkAdminToken } from './store/authSlice'
 
 function App() {
-  const [count, setCount] = useState(0)
+const {isAdmin,loading} = useSelector(state=>state.auth);
+const dispatch = useDispatch();
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+useEffect(()=>{
+  const storedToken = localStorage.getItem("adminToken");
+  if(storedToken){
+    dispatch(checkAdminToken(storedToken));
+  }
+  
+},[])
+
+if(loading){
+  return <p>Checking Authentication...</p>
+}
+
+  return <React.Fragment>
+    <Switch>
+      
+      <Route path="/admin/auth" exact>
+        {!isAdmin ? <AdminAuth/> : <Redirect to="/admin/home"/>}</Route>
+        <Route path="/admin/home" exact>
+        {isAdmin ? <AdminHomePage /> : <Redirect to="/admin/auth" />}
+      </Route>
+      <Route path="/" exact>
+        <Redirect to="/admin/auth" />
+      </Route>
+      <Route path="*">
+        <Redirect to="/admin/auth" />
+      </Route>
+    </Switch>
+  </React.Fragment>
+    
 }
 
 export default App
