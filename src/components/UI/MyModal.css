@@ -1,0 +1,23 @@
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;                  /* scrollbar width */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f0f0f0;         /* track color */
+    border-radius: 10px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: gray;         /* scrollbar color (purple!) */
+    border-radius: 10px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgb(98, 98, 98);         /* darker on hover */
+  }
+
+  .modal-80w {
+    width: 40% !important;
+    max-width: none !important;
+  }
+  

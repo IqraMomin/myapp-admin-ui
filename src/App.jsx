@@ -5,6 +5,9 @@ import { Switch ,Route, Redirect} from 'react-router-dom/cjs/react-router-dom.mi
 import AdminHomePage from './components/AdminHomePage'
 import { useDispatch, useSelector } from 'react-redux'
 import { checkAdminToken } from './store/authSlice'
+import { fetchHotelList } from './store/adminHotelSlice'
+import { fetchCategoryList } from './store/categorySlice'
+import { fetchBookings } from './store/bookingHistorySlice'
 
 function App() {
 const {isAdmin,loading} = useSelector(state=>state.auth);
@@ -18,6 +21,12 @@ useEffect(()=>{
   
 },[])
 
+  useEffect(()=>{
+    dispatch(fetchHotelList());
+    dispatch(fetchCategoryList());
+    dispatch(fetchBookings());
+  },[isAdmin,dispatch]);
+
 if(loading){
   return <p>Checking Authentication...</p>
 }
@@ -26,8 +35,8 @@ if(loading){
     <Switch>
       
       <Route path="/admin/auth" exact>
-        {!isAdmin ? <AdminAuth/> : <Redirect to="/admin/home"/>}</Route>
-        <Route path="/admin/home" exact>
+        {!isAdmin ? <AdminAuth/> : <Redirect to="/admin"/>}</Route>
+        <Route path="/admin">
         {isAdmin ? <AdminHomePage /> : <Redirect to="/admin/auth" />}
       </Route>
       <Route path="/" exact>

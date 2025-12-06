@@ -6,6 +6,8 @@ import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { Provider } from 'react-redux';
 import store from "./store/index"
 import "bootstrap-icons/font/bootstrap-icons.css";
+import "react-multi-carousel/lib/styles.css";
+
 
 
 createRoot(document.getElementById('root')).render(
