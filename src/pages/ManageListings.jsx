@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
-import HotelList from '../components/HotelList'
 import AddHotel from '../components/AddHotel'
 
 function ManageListings() {
 
     return (
-        <React.Fragment>
-            <AddHotel/>
-            
-           
-        </React.Fragment>
+        <div style={{width:"100%",height:"100%"}}>
+            Add New Hotels        
+        <AddHotel/>
+        </div>
     )
 }
 

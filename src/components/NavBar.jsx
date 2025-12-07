@@ -18,7 +18,7 @@ const logoutHandler = ()=>{
     <Navbar
       bg="light"
       className="px-4 shadow-sm d-flex align-items-center"
-      style={{ position: "fixed", top: 0, left: 0, width: "100%" }}
+      style={{ position: "fixed", top: 0, left: 0, width: "100%" ,zIndex:"999"}}
     >
       {/* LEFT MENU */}
       <Nav className="gap-4">

@@ -3,6 +3,7 @@ import { Container,Col,Row,Card,Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { updateStatus } from '../store/bookingHistorySlice'
+import "./BookingPage.css"
 
 function BookingPage() {
     const history = useHistory();
@@ -13,7 +14,8 @@ function BookingPage() {
         dispatch(updateStatus({
             email:ele.email,
             bookingId:ele.bookingId,
-            status:"accepted"
+            status:"accepted",
+            hotelData:ele
         }))
     }
 
@@ -21,7 +23,8 @@ function BookingPage() {
         dispatch(updateStatus({
             email:ele.email,
             bookingId:ele.bookingId,
-            status:"rejected"
+            status:"rejected",
+            hotelData:ele
         }))
     }
 
@@ -46,10 +49,15 @@ function BookingPage() {
                                 <Card.Title>
                                     {ele.title}
                                 </Card.Title>
-                                <div className='d-flex justify-content-between align-items-center px-1 py-2'>
-                                    Rs.{ele.price}/night
-                                    
+                                <div className="booking-item">
+                                <p>Price:{ele.price}/night</p>
+                                <p>Address:{ele.address}</p>
+                                <p>Pincode:{ele.pincode}</p>
+                                <p>City:{ele.city}</p>
+                                <p>Email:{ele.email}</p>
                                 </div>
+                                                               
+                                
                                 <Card.Title>Status:{ele.status}</Card.Title>
                             </Card.Body>
                             {ele.status==="pending" && <div className='d-flex justify-content-between'>

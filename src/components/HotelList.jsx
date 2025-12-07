@@ -10,7 +10,7 @@ function HotelList({onEdit}) {
     }
     const hotelList = useSelector(state=>state.adminHotels.hotels);
     return (
-        <Row>
+        <Row className='m-0 p-0'>
                         
                 {hotelList.map(ele=>{
 
@@ -18,10 +18,14 @@ function HotelList({onEdit}) {
                         <Card className='p-0 m-0'>
                             <img src={ele.image}width="100%" height="250px" alt={ele.title}/>
                             <p>{ele.title}</p>
+                            <p>{ele.price}</p>
                             <p>{ele.address}</p>
-                            <div className='product-actions d-flex'>
-                             <Button onClick={()=>{onEdit(ele)}}>Edit</Button>
-                             <Button onClick={()=>{deleteHotelHandler(ele.id)}}>Delete</Button>
+                            <p>{ele.pincode}</p>
+                            <p>{ele.city}</p>
+                            <p>{ele.email}</p>
+                            <div className='product-actions d-flex justify-content-between'>
+                             <Button variant="outline-dark" onClick={()=>{onEdit(ele)}}>Edit</Button>
+                             <Button variant='outline-danger' onClick={()=>{deleteHotelHandler(ele.id)}}>Delete</Button>
                             </div>
                         </Card>
                     </Col>

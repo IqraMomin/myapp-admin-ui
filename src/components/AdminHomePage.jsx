@@ -6,6 +6,7 @@ import {Route } from 'react-router-dom/cjs/react-router-dom.min';
 import AllHotels from '../pages/AllHotels';
 import BookingPage from '../pages/BookingPage';
 import ManageListings from '../pages/ManageLIstings';
+import AddHotel from './AddHotel';
 
 function AdminHomePage() {
     const history = useHistory();
@@ -16,7 +17,7 @@ function AdminHomePage() {
         <NavBar/>
         <Route path="/admin/home" exact><AllHotels/></Route>
         <Route path="/admin/bookings" exact><BookingPage/></Route>
-        <Route path="/admin/listings" exact><ManageListings/></Route>
+        <Route path="/admin/listings" exact><AddHotel/></Route>
        </React.Fragment>
     )
 }

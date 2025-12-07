@@ -1,0 +1,6 @@
+.booking-item{
+    display: flex;
+    flex-direction: column;
+    line-height: 0.5;
+    align-items: flex-start;
+}

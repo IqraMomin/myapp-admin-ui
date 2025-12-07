@@ -76,10 +76,13 @@ export const fetchBookings = createAsyncThunk(
     }
 )
 export const updateStatus = createAsyncThunk(
-    "bookingHistory/updateStatus",async({email,bookingId,status},thunkAPI)=>{
+    "bookingHistory/updateStatus",async({email,bookingId,status,hotelData},thunkAPI)=>{
         try{
             const safeEmail = email.replace(/[.]/g,"_");
             await axios.patch(`https://travel-booking-website-11848-default-rtdb.firebaseio.com/bookings/${safeEmail}/${bookingId}.json`,{status})
+            if(status==="accepted"){
+                await axios.post(`https://travel-booking-website-11848-default-rtdb.firebaseio.com/cart/${safeEmail}.json`,hotelData)
+            }
             return {bookingId,status}
         }catch(err){
             return thunkAPI.rejectWithValue("Failed to update Status");
