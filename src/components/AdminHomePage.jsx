@@ -1,20 +1,17 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { useDispatch } from 'react-redux';
-import NavBar from './Navbar';
 import {Route } from 'react-router-dom/cjs/react-router-dom.min';
 import AllHotels from '../pages/AllHotels';
 import BookingPage from '../pages/BookingPage';
-import ManageListings from '../pages/ManageLIstings';
 import AddHotel from './AddHotel';
+import Navbar from './Navbar.jsx';
 
 function AdminHomePage() {
-    const history = useHistory();
-    const dispatch = useDispatch();
     
     return (
         <React.Fragment>
-        <NavBar/>
+        <Navbar/>
         <Route path="/admin/home" exact><AllHotels/></Route>
         <Route path="/admin/bookings" exact><BookingPage/></Route>
         <Route path="/admin/listings" exact><AddHotel/></Route>
