@@ -5,8 +5,7 @@ import {Route } from 'react-router-dom/cjs/react-router-dom.min';
 import AllHotels from '../pages/AllHotels';
 import BookingPage from '../pages/BookingPage';
 import AddHotel from './AddHotel';
-import Navbar from './Navbar.jsx';
-
+import Navbar from './Navbar';
 function AdminHomePage() {
     
     return (

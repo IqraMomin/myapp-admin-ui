@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { authActions } from "../store/authSlice";
 
-function NavBar({ showCart }) {
-  const [search, setSearch] = useState("");
+
+function Navbar() {
   const dispatch = useDispatch();
 
 const logoutHandler = ()=>{
@@ -40,5 +40,4 @@ const logoutHandler = ()=>{
     </Navbar>
   );
 }
-
-export default NavBar;
+export default Navbar
